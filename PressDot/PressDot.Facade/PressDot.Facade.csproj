@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PressDot.Contracts\PressDot.Contracts.csproj" />
+    <ProjectReference Include="..\PressDot.Service\PressDot.Service.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿@model PressDot.Contracts.Model.NewRegistrationModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PressDots Registration</title>
+    <style>
+        body{font-family:Calibri, sans-serif;font-size: 11pt;color: #555;}
+        blockquote{border-left: 8px solid #cceeaa;font-size: 12pt;margin:0;padding: 30px 60px;}
+    </style>
+</head>
+<body>
+    <h1>PressDots Registration</h1>
+    <p>Dear @Model.Firstname:</p>
+    @if (Model.SelfRegistration && Model.UserRoleId == 2)
+    {
+        <p>Your account has been created successfully. Click on following <a href="@(Model.WebsiteUrl)Activate/?token=@(Model.Token)">link</a> to activate your account. </p>
+    }
+    else if (Model.SelfRegistration && Model.UserRoleId != 2)
+    {
+        <p>We have received your request. Our team will contact you for verification of detail within 24-48 hours. </p>
+    }
+    else
+    {
+        <p>Your account has been created. Please contact PressDots administrator for details. </p>
+    }
+
+</body>
+</html>

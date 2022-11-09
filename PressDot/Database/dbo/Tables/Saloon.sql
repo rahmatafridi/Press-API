@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[Saloon](
+	[SaloonId]					INT				IDENTITY(1,1) NOT NULL,
+	[SaloonName]				NVARCHAR(200)	NOT NULL,
+	[CountryId]					INT				NOT NULL,
+	[CityId]					INT				NOT NULL,
+	[SaloonTypeId]				INT				NOT NULL,
+	[CreatedDate]				DATETIME		CONSTRAINT [DF_Saloon_CreatedDate]  DEFAULT (GETDATE()) NOT NULL,
+	[CreatedBy]					INT				NULL,
+	[UpdatedDate]				DATETIME		NULL,
+	[UpdatedBy]					INT				NULL,
+	[DeletedDate]				DATETIME		NULL,
+	[DeletedBy]					INT				NULL,
+	[IsDeleted]					BIT				CONSTRAINT [DF_Saloon_IsDeleted] DEFAULT ((0)) NOT NULL,
+	[Email] NVARCHAR(200) NULL,
+	[Phone] NVARCHAR(25) NULL,
+	[Address] NVARCHAR(500) NULL,
+	CONSTRAINT [PK_Saloon] PRIMARY KEY CLUSTERED ([SaloonId] ASC),
+    CONSTRAINT [FK_Saloon_Country] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Location] ([LocationId]),
+	CONSTRAINT [FK_Saloon_City] FOREIGN KEY ([CityId]) REFERENCES [dbo].[Location] ([LocationId]),
+	CONSTRAINT [FK_Saloon_SaloonType] FOREIGN KEY ([SaloonTypeId]) REFERENCES [dbo].[SaloonType] ([SaloonTypeId])
+);
